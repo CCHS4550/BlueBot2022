@@ -23,4 +23,11 @@ public class DriveTrain extends SubsystemBase {
     public DriveTrain() {
 
     }
+
+    public void setSpeed(double FLSpeed, double FRSpeed, double BLSPeed, double BRSpeed){
+        frontLeft.set(FLSpeed);
+        frontRight.set(FRSpeed);
+        backLeft.set(BLSPeed);
+        backRight.set(BRSpeed);
+    }
 }

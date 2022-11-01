@@ -20,4 +20,20 @@ package frc.parent;
 public interface RobotMap {
     public static final int EXAMPLE_MOTOR_PORT = 5318008;
     public static final boolean EXAMPLE_MOTOR_REVERSE = false;
+    public static final int FLYWHEEL_ONE_PORT = 5318009;
+    // Drive train (placeholder values)
+    public static final int FRONT_LEFT_PORT = 5318010;
+    public static final boolean FRONT_LEFT_REVERSE = false;
+    public static final int FRONT_RIGHT_PORT = 5318010;
+    public static final boolean FRONT_RIGHT_REVERSE = false;
+    public static final int BACK_LEFT_PORT = 5318010;
+    public static final boolean BACK_LEFT_REVERSE = false;
+    public static final int BACK_RIGHT_PORT = 5318010;
+    public static final boolean BACK_RIGHT_REVERSE = false;
+    // Shooter
+    public static final boolean FLYWHEEL_ONE_REVERSE = false;
+    public static final int FLYWHEEL_TWO_PORT = 5318010;
+    public static final boolean FLYWHEEL_TWO_REVERSE = false;
+
+
 }

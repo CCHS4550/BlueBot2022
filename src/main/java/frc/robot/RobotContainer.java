@@ -2,18 +2,21 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.helpers.OI;
 import frc.parent.ControlMap;
+import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.MotorEx;
 
 public class RobotContainer {
     //must instantiate an object of each subsystem you use
     private MotorEx example = new MotorEx();
-
+    private DriveTrain driveTrain = new DriveTrain();
     Joystick[] controllers = OI.joystickArray;
 
     public RobotContainer(){
+        driveTrain.setDefaultCommand(new RunCommand(() -> driveTrain.axisDrive(OI.axis(ControlMap.L_JOYSTICK_VERTICAL, axis), turnSpeed);));
         configureButtons();
     } 
 

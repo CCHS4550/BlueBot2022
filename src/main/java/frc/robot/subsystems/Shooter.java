@@ -29,4 +29,8 @@ public class Shooter extends SubsystemBase {
         flywheelOne.set(speed);
         flywheelTwo.set(speed);
     }
+    
+    public void load(boolean toggle){
+        loader.set(toggle);
+    }
 }

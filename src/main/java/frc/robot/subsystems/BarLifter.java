@@ -7,6 +7,13 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.helpers.CCSparkMax;
 import frc.parent.RobotMap;
 public class BarLifter extends SubsystemBase {
-    private final CCSparkMax lifter = new CCSparkMax("Lifter", "lift", RobotMap.LIFTER_PORT, 
-    MotorType.kBrushless, IdleMode.kBrake, RobotMap.LIFTER_REVERSE, true);
+    private final CCSparkMax lifter = new CCSparkMax("Lifter", "l", RobotMap.LIFTER_PORT, MotorType.kBrushless, IdleMode.kBrake, RobotMap.LIFTER_REVERSE, true);
+
+    public BarLifter() {
+
+    }
+    public void setSpeed(int speed) {
+        lifter.set(speed);
+    }
 }
+

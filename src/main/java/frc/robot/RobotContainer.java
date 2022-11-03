@@ -1,22 +1,29 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.helpers.OI;
 import frc.parent.ControlMap;
+import frc.parent.PilotMap;
+import frc.robot.subsystems.BarLifter;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.MotorEx;
+import frc.robot.subsystems.Shooter;
 
 public class RobotContainer {
     //must instantiate an object of each subsystem you use
     private MotorEx example = new MotorEx();
     private DriveTrain driveTrain = new DriveTrain();
+    private BarLifter bLifter = new BarLifter();
     Joystick[] controllers = OI.joystickArray;
 
+    private Shooter shooter = new Shooter();
+
     public RobotContainer(){
-        driveTrain.setDefaultCommand(new RunCommand(() -> driveTrain.axisDrive(OI.axis(ControlMap.L_JOYSTICK_VERTICAL, axis), turnSpeed);));
+        driveTrain.setDefaultCommand(new RunCommand(() -> driveTrain.axisDrive(OI.axis(ControlMap.L_JOYSTICK_VERTICAL, PilotMap.Y_AXIS), OI.axis(ControlMap.R_JOYSTICK_HORIZONTAL, PilotMap.X_AXIS))));
         configureButtons();
     } 
 
@@ -33,9 +40,36 @@ public class RobotContainer {
         //see link for full list of logic operators
 
 
+
         new JoystickButton(controllers[0], ControlMap.A_BUTTON)
          .whenPressed(() -> example.setSpeed(0.5))
-         .whenReleased(() -> example.setSpeed(0));
+                .whenReleased(() -> example.setSpeed(0));
+         
+        new JoystickButton(controllers[1], ControlMap.B_BUTTON).whenPressed(() -> {
+            shooter.setSpeed(1);
+        }).whenReleased(() -> {
+            shooter.setSpeed(0);
+        });
+
+        new JoystickButton(controllers[1], ControlMap.Y_BUTTON).whenPressed(() -> {
+            shooter.load();
+        });
+
+
+
+       Trigger uppies = new Trigger(){
+            public boolean get(){
+                return OI.dPad(1, ControlMap.DPAD_UP);
+            }
+        }.whenActive(() -> bLifter.moveBar(0.8))
+         .negate()
+         .whenActive(() -> bLifter.moveBar(-0.8));
+        
+        // new Trigger(){
+        //     public boolean get(){
+        //         return OI.dPad(1, ControlMap.DPAD_DOWN);
+        //     }
+        // }.and(uppies.negate()).whenActive(() -> bLifter.moveBar(-0.8));
     }
 
     void test(){

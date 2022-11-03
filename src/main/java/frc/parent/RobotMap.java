@@ -33,6 +33,7 @@ public interface RobotMap {
     public static final boolean FLYWHEEL_ONE_REVERSE = false;
     public static final int FLYWHEEL_TWO_PORT = 5;
     public static final boolean FLYWHEEL_TWO_REVERSE = false;
+    public static final int BAR_LIMIT_SWITCH = 0;
     
     // Example
     public static final int EXAMPLE_MOTOR_PORT = 5318008;

@@ -25,8 +25,13 @@ public class Shooter extends SubsystemBase {
 
     }
 
-    public void setSpeed(double speed){
+    public void setSpeed(double speed) {
         flywheelOne.set(speed);
         flywheelTwo.set(speed);
+    }
+    
+    public void load() {
+        loader.toggle();
+        loader.toggle();
     }
 }

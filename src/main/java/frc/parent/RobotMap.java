@@ -18,23 +18,23 @@ package frc.parent;
         3. If the port is not plugged in, make int values -1, and boolean values false
 */
 public interface RobotMap {
-    // DriveTrain (placeholder values)
-    public static final int FRONT_LEFT_PORT = 0;
-    public static final boolean FRONT_LEFT_REVERSE = false;
-    public static final int FRONT_RIGHT_PORT = 1;
+    //DriveTrain Constants
+    public static final int FRONT_RIGHT = 0;
     public static final boolean FRONT_RIGHT_REVERSE = false;
-    public static final int BACK_LEFT_PORT = 2;
-    public static final boolean BACK_LEFT_REVERSE = false;
-    public static final int BACK_RIGHT_PORT = 3;
+    public static final int FRONT_LEFT = 1;
+    public static final boolean FRONT_LEFT_REVERSE = false;
+    public static final int BACK_RIGHT = 2;
     public static final boolean BACK_RIGHT_REVERSE = false;
+    public static final int BACK_LEFT = 3;
+    public static final boolean BACK_LEFT_REVERSE = false;
 
-    // Shooter
-    public static final int FLYWHEEL_ONE_PORT = 4;
-    public static final boolean FLYWHEEL_ONE_REVERSE = false;
-    public static final int FLYWHEEL_TWO_PORT = 5;
-    public static final boolean FLYWHEEL_TWO_REVERSE = false;
-    
-    // Example
-    public static final int EXAMPLE_MOTOR_PORT = 5318008;
-    public static final boolean EXAMPLE_MOTOR_REVERSE = false;
+    //Shooter Constants
+    public static final int LOADER = 4;
+    public static final boolean LOADER_REVERSE = false;
+    public static final int SHOOTER = 5;
+    public static final boolean SHOOTER_REVERSE = false;
+
+    //Bar Lifter Constants
+    public static final int LIFTER = 6;
+    public static final boolean LIFTER_REVERSE = false;
 }

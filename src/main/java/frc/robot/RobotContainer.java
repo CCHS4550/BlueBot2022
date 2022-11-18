@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.helpers.OI;
 import frc.parent.ControlMap;
 import frc.parent.PilotMap;
+import frc.parent.RobotMap;
 import frc.robot.subsystems.BarLifter;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.MotorEx;
@@ -78,6 +79,6 @@ public class RobotContainer {
 
     public Command getAutoCommand(){
         //see Autonomous class for more details
-        return new Autonomous(example);
+        return new Autonomous(driveTrain);
     }
 }

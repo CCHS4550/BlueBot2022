@@ -18,7 +18,6 @@ import frc.robot.subsystems.DriveTrain;
 public class Robot extends TimedRobot {
 
   private RobotContainer container;
-  private DriveTrain drive = new DriveTrain();
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -61,8 +60,6 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     container.getAutoCommand().schedule();
-    drive.axisDrive(0.5, 0);
-    drive.axisDrive(0, 0);
 
   }
 

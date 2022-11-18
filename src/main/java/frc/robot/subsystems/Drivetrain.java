@@ -25,10 +25,21 @@ public class DriveTrain extends SubsystemBase {
 
     MotorControllerGroup left = new MotorControllerGroup(frontLeft, backLeft);
     MotorControllerGroup right = new MotorControllerGroup(frontRight, backRight);
-    
     DifferentialDrive driveTrain = new DifferentialDrive(left, right);
+
+    public DriveTrain() {
+        
+    }
 
     public void axisDrive(double speed, double turnSpeed) {
         driveTrain.arcadeDrive(speed * speed, turnSpeed * turnSpeed);
+    }
+
+    public SequentialCommandGroup runForTime(double seconds, double power){
+        SequentialCommandGroup res = new SequentialCommandGroup(
+            new InstantCommand(() -> axisDrive(power, 0)),
+            new WaitCommand(seconds)
+        );
+        return res;
     }
 }

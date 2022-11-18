@@ -42,7 +42,7 @@ public class RobotContainer {
 
     }
 
-    public Command getAutoCommand(){
+    public Command getAutoCommand(){ 
         //see Autonomous class for more details
         return new Autonomous(example);
     }

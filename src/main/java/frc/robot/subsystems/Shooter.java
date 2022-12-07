@@ -18,16 +18,26 @@ import frc.parent.RobotMap;
 public class Shooter extends SubsystemBase {
     // Initializing motors and solenoids
     private final Solenoid loader = new Solenoid(PneumaticsModuleType.CTREPCM, 1); // CTREPCM or REVPH?
-    private final CCSparkMax flywheelOne = new CCSparkMax("Flywheel One", "fo", RobotMap.FLYWHEEL_ONE_PORT, MotorType.kBrushless, IdleMode.kBrake, RobotMap.FLYWHEEL_ONE_REVERSE, true);
-    private final CCSparkMax flywheelTwo = new CCSparkMax("Flywheel Two", "ft", RobotMap.FLYWHEEL_TWO_PORT, MotorType.kBrushless, IdleMode.kBrake, RobotMap.FLYWHEEL_TWO_REVERSE, true);
+    private final CCSparkMax flywheel = new CCSparkMax("Flywheel One", "fo", RobotMap.FLYWHEEL_ONE_PORT, MotorType.kBrushless, IdleMode.kBrake, RobotMap.FLYWHEEL_ONE_REVERSE, true);
 
     public Shooter() {
 
     }
 
+    public Command setSpeedCommand(double speed) {
+        RunCommand res = new RunCommand(() -> {
+            setSpeed(speed);
+        }, this){
+            @Override
+            public boolean isFinished() {
+                return true;
+            }
+        };
+        return res;
+    }
+
     public void setSpeed(double speed){
-        flywheelOne.set(speed);
-        flywheelTwo.set(speed);
+        flywheel.set(speed);
     }
     
     public void load(boolean toggle){

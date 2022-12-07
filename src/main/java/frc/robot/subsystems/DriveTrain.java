@@ -17,11 +17,14 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.helpers.CCSparkMax;
+import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import frc.parent.RobotMap;
 
 public class DriveTrain extends SubsystemBase {
 
     public static AHRS gyro = new AHRS(SPI.Port.kMXP);
+    private final Solenoid gearbox = new Solenoid(PneumaticsModuleType.CTREPCM, 1); // CTREPCM or REVPH?
 
     // Initializing motors
     private final CCSparkMax frontLeft = new CCSparkMax("Front Left", "fl", RobotMap.FRONT_LEFT_PORT, MotorType.kBrushless, IdleMode.kCoast, RobotMap.FRONT_LEFT_REVERSE, true);
@@ -46,8 +49,7 @@ public class DriveTrain extends SubsystemBase {
         }, this){
             @Override
             public boolean isFinished() {
-                // Todo
-                return position;
+                return controller.getPositionError() < 0.5;
             }
         };
         return res;

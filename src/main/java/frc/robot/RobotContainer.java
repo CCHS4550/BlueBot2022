@@ -12,12 +12,12 @@ import frc.robot.subsystems.MotorEx;
 public class RobotContainer {
     //must instantiate an object of each subsystem you use
     private MotorEx example = new MotorEx();
-    private DriveTrain driveTrain = new DriveTrain();
+    private DriveTrain chassis = new DriveTrain();
     Joystick[] controllers = OI.joystickArray;
 
     public RobotContainer(){
-        driveTrain.setDefaultCommand(new RunCommand(() -> driveTrain.axisDrive(OI.axis(ControlMap.L_JOYSTICK_VERTICAL, axis), turnSpeed);), requirements));
         configureButtons();
+        chassis.setDefaultCommand(new RunCommand(() -> chassis.axisDrive(OI.axis(0, ControlMap.L_JOYSTICK_VERTICAL), OI.axis(0, ControlMap.R_JOYSTICK_HORIZONTAL)), this));
     } 
 
     private void configureButtons() {

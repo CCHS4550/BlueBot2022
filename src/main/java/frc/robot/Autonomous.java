@@ -1,5 +1,6 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.parent.RobotMap;
 import frc.robot.subsystems.DriveTrain;
@@ -15,7 +16,8 @@ public class Autonomous extends SequentialCommandGroup{
             //whatever you put here must extend from command
             //https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/package-summary.html
             //check link for relevant subclasses
-            drive.runForTime(1, 0.5)
+                drive.runForTime(1, 0.5)
+            // new WaitCommand(1)
             // example.runForTime(5, 0.5), //runs the motor at half power for 5 seconds
             // example.reachPos(0.7) //runs the motor until it reaches the specified position
         );

@@ -36,6 +36,9 @@ public interface RobotMap {
     public static final int FLYWHEEL_TWO_PORT = 5;
     public static final boolean FLYWHEEL_TWO_REVERSE = false;
     public static final int BAR_LIMIT_SWITCH = 0;
+
+    public static final int LOADER_ONE = 0; //Change 
+    public static final int LOADER_TWO = 1;
     
     // Example
     public static final int EXAMPLE_MOTOR_PORT = 5318008;

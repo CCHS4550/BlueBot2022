@@ -24,7 +24,11 @@ public class RobotContainer {
     private Shooter shooter = new Shooter();
 
     public RobotContainer(){
-        driveTrain.setDefaultCommand(new RunCommand(() -> driveTrain.axisDrive(OI.axis(ControlMap.L_JOYSTICK_VERTICAL, PilotMap.Y_AXIS), OI.axis(ControlMap.R_JOYSTICK_HORIZONTAL, PilotMap.X_AXIS))));
+        driveTrain.setDefaultCommand(new RunCommand(() -> driveTrain
+                .axisDrive(OI.axis(0, ControlMap.L_JOYSTICK_VERTICAL), OI.axis(0, ControlMap.R_JOYSTICK_HORIZONTAL))));
+        bLifter.setDefaultCommand(new RunCommand(() -> 
+            bLifter.moveBar(0)
+        ));
         configureButtons();
     } 
 
@@ -62,15 +66,14 @@ public class RobotContainer {
             public boolean get(){
                 return OI.dPad(1, ControlMap.DPAD_UP);
             }
-        }.whenActive(() -> bLifter.moveBar(0.8))
-         .negate()
-         .whenActive(() -> bLifter.moveBar(-0.8));
+        }.whenActive(() -> bLifter.moveBar(0.8)).negate();
+         
         
-        // new Trigger(){
-        //     public boolean get(){
-        //         return OI.dPad(1, ControlMap.DPAD_DOWN);
-        //     }
-        // }.and(uppies.negate()).whenActive(() -> bLifter.moveBar(-0.8));
+        new Trigger(){
+            public boolean get(){
+                return OI.dPad(1, ControlMap.DPAD_DOWN);
+            }
+        }.and(uppies.negate()).whenActive(() -> bLifter.moveBar(-0.8));
     }
 
     void test(){

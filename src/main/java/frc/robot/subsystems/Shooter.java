@@ -13,13 +13,15 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.helpers.CCSparkMax;
+import frc.helpers.PneumaticsSystem;
 import frc.parent.RobotMap;
 
 public class Shooter extends SubsystemBase {
     // Initializing motors and solenoids
-    private final Solenoid loader = new Solenoid(PneumaticsModuleType.CTREPCM, 1); // CTREPCM or REVPH?
-    private final CCSparkMax flywheelOne = new CCSparkMax("Flywheel One", "fo", RobotMap.FLYWHEEL_ONE_PORT, MotorType.kBrushless, IdleMode.kBrake, RobotMap.FLYWHEEL_ONE_REVERSE, true);
-    private final CCSparkMax flywheelTwo = new CCSparkMax("Flywheel Two", "ft", RobotMap.FLYWHEEL_TWO_PORT, MotorType.kBrushless, IdleMode.kBrake, RobotMap.FLYWHEEL_TWO_REVERSE, true);
+    private final CCSparkMax flywheelOne = new CCSparkMax("Flywheel One", "fo", RobotMap.FLYWHEEL_ONE_PORT,
+            MotorType.kBrushless, IdleMode.kBrake, RobotMap.FLYWHEEL_ONE_REVERSE, true);
+    private final PneumaticsSystem loader = new PneumaticsSystem(PneumaticsModuleType.CTREPCM, RobotMap.LOADER_ONE,
+            RobotMap.LOADER_TWO);
 
     public Shooter() {
 
@@ -27,11 +29,9 @@ public class Shooter extends SubsystemBase {
 
     public void setSpeed(double speed) {
         flywheelOne.set(speed);
-        flywheelTwo.set(speed);
     }
     
-    public void load() {
-        loader.toggle();
+    public void load() { // pressa twice or press until hold
         loader.toggle();
     }
 }

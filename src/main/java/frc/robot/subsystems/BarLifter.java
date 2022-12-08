@@ -20,20 +20,13 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
 public class BarLifter extends SubsystemBase {
     private CCSparkMax one = new CCSparkMax("One", "O", RobotMap.FLYWHEEL_ONE_PORT, MotorType.kBrushless, IdleMode.kBrake, RobotMap.FLYWHEEL_ONE_REVERSE, true);
-    private CCSparkMax two = new CCSparkMax("Two", "T", RobotMap.FLYWHEEL_TWO_PORT, MotorType.kBrushless, IdleMode.kBrake, RobotMap.FLYWHEEL_TWO_REVERSE, true);
-    private MotorControllerGroup motors = new MotorControllerGroup(one, two);
-    private DigitalInput limSwitch = new DigitalInput(RobotMap.BAR_LIMIT_SWITCH);
     
     public BarLifter() {
 
     }
     
     public void moveBar(double speed) {
-        if (!limSwitch.get()) {
-            motors.set(speed);    
-        } else {
-            motors.set(0);
-        }
+        one.set(speed);
     }
     
 }

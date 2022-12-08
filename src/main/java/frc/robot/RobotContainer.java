@@ -17,6 +17,7 @@ public class RobotContainer {
 
     public RobotContainer(){
         configureButtons();
+        //"this" at the end refers to the robotcontainer class, you need to make it something that extends from a subsystem
         chassis.setDefaultCommand(new RunCommand(() -> chassis.axisDrive(OI.axis(0, ControlMap.L_JOYSTICK_VERTICAL), OI.axis(0, ControlMap.R_JOYSTICK_HORIZONTAL)), this));
     } 
 

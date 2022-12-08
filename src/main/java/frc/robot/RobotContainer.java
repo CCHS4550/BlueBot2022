@@ -1,24 +1,30 @@
 package frc.robot;
 
+import java.util.ResourceBundle.Control;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.helpers.OI;
 import frc.parent.ControlMap;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.MotorEx;
+import frc.robot.subsystems.*;
 
 public class RobotContainer {
     //must instantiate an object of each subsystem you use
     private MotorEx example = new MotorEx();
     private DriveTrain chassis = new DriveTrain();
+    private Shooter shooter = new Shooter();
+    private BarLifter lifter = new BarLifter();
     Joystick[] controllers = OI.joystickArray;
 
     public RobotContainer(){
         configureButtons();
-        //"this" at the end refers to the robotcontainer class, you need to make it something that extends from a subsystem
-        chassis.setDefaultCommand(new RunCommand(() -> chassis.axisDrive(OI.axis(0, ControlMap.L_JOYSTICK_VERTICAL), OI.axis(0, ControlMap.R_JOYSTICK_HORIZONTAL)), this));
+        chassis.setDefaultCommand(new RunCommand(() -> chassis.axisDrive(OI.axis(0, ControlMap.L_JOYSTICK_VERTICAL), OI.axis(0, ControlMap.R_JOYSTICK_HORIZONTAL)), chassis));
+        shooter.setDefaultCommand(new RunCommand(() -> shooter.setSpeed(OI.axis(1, ControlMap.RT)), shooter));
     } 
 
     private void configureButtons() {
@@ -37,6 +43,31 @@ public class RobotContainer {
         new JoystickButton(controllers[0], ControlMap.A_BUTTON)
          .whenPressed(() -> example.setSpeed(0.5))
          .whenReleased(() -> example.setSpeed(0));
+
+        //Arm commmands
+        new Trigger(){
+            @Override
+            public boolean get(){
+                return OI.dPadAng(1) == 0;
+            }
+        }.whenActive(() -> lifter.setSpeed(.5));
+
+        new Trigger(){
+            @Override
+            public boolean get(){
+                return OI.dPadAng(1) == 180;
+            }
+        }.whenActive(() -> lifter.setSpeed(-.5));
+        
+        new Trigger(){
+            @Override
+            public boolean get(){
+                return OI.dPadAng(1) == -1;
+            }
+        }.whenActive(() -> lifter.setSpeed(0));
+        
+
+         
     }
 
     void test(){
@@ -45,6 +76,6 @@ public class RobotContainer {
 
     public Command getAutoCommand(){ 
         //see Autonomous class for more details
-        return new Autonomous(example);
+        return new Autonomous(chassis, shooter);
     }
 }

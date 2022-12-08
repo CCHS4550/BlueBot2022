@@ -44,12 +44,14 @@ public class DriveTrain extends SubsystemBase {
     PIDController controller = new PIDController(0.5, 0, 0);
     public Command moveTo(double position) {
         RunCommand res = new RunCommand(() -> {
-            left.set(controller.calculate(frontLeft.getPosition()));
-            right.set(controller.calculate(frontRight.getPosition()));
+            left.set(controller.calculate(frontLeft.getPosition(), position));
+            right.set(controller.calculate(frontRight.getPosition(), position));
         }, this){
             @Override
             public boolean isFinished() {
-                return controller.getPositionError() < 0.5;
+                //fix
+                //return controller.getPositionError() < 0.5;
+                return (Math.abs(position - frontLeft.getPosition()) < .5 && Math.abs(position - frontRight.getPosition()) < .5);
             }
         };
         return res;

@@ -34,6 +34,9 @@ public interface RobotMap {
     public static final int FLYWHEEL_TWO_PORT = 5;
     public static final boolean FLYWHEEL_TWO_REVERSE = false;
 
+    //Loader Constants
+    public static final int LOADER_ONE = 1;
+    public static final int LOADER_TWO = 2;
     //Bar Lifter Constants
     public static final int LIFTER_PORT = 6;
     public static final boolean LIFTER_REVERSE = false;

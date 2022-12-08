@@ -12,8 +12,14 @@ public class BarLifter extends SubsystemBase {
     public BarLifter() {
 
     }
-    public void setSpeed(int speed) {
+
+    public void setSpeed(double speed) {
         lifter.set(speed);
     }
 }
 
+/*limit switch?
+how many barlifter motors?
+how many flywheel motors
+
+*/

@@ -13,12 +13,15 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.helpers.CCSparkMax;
+import frc.helpers.PneumaticsSystem;
 import frc.parent.RobotMap;
 
 public class Shooter extends SubsystemBase {
     // Initializing motors and solenoids
-    private final Solenoid loader = new Solenoid(PneumaticsModuleType.CTREPCM, 1); // CTREPCM or REVPH?
+    private final PneumaticsSystem loader = new PneumaticsSystem(PneumaticsModuleType.CTREPCM, RobotMap.LOADER_ONE, RobotMap.LOADER_TWO); // CTREPCM or REVPH?
     private final CCSparkMax flywheel = new CCSparkMax("Flywheel One", "fo", RobotMap.FLYWHEEL_ONE_PORT, MotorType.kBrushless, IdleMode.kBrake, RobotMap.FLYWHEEL_ONE_REVERSE, true);
+
+
 
     public Shooter() {
 
@@ -40,7 +43,7 @@ public class Shooter extends SubsystemBase {
         flywheel.set(speed);
     }
     
-    public void load(boolean toggle){
-        loader.set(toggle);
+    public void toggle(){
+        loader.toggle();
     }
 }

@@ -32,10 +32,11 @@ public interface RobotMap {
     public static final boolean BACK_RIGHT_REVERSE = false;
 
     // Shooter
-    public static final int FLYWHEEL_ONE_PORT = 0;
+    public static final int FLYWHEEL_ONE_PORT = 12;
     public static final boolean FLYWHEEL_ONE_REVERSE = false;
 
     public static final int BAR_LIFTER_MOTOR = 5;
+    public static final boolean BAR_LIFTER_REVERSE = false;
 
     public static final int LOADER_ONE = 0; //Change 
     public static final int LOADER_TWO = 1;

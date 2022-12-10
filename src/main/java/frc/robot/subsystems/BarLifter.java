@@ -19,7 +19,7 @@ import frc.robot.Robot;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
 public class BarLifter extends SubsystemBase {
-    private CCSparkMax one = new CCSparkMax("One", "O", RobotMap.FLYWHEEL_ONE_PORT, MotorType.kBrushless, IdleMode.kBrake, RobotMap.FLYWHEEL_ONE_REVERSE, true);
+    private CCSparkMax one = new CCSparkMax("One", "O", RobotMap.BAR_LIFTER_MOTOR, MotorType.kBrushless, IdleMode.kBrake, RobotMap.BAR_LIFTER_REVERSE, true);
     
     public BarLifter() {
 

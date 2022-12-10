@@ -25,10 +25,11 @@ public class RobotContainer {
 
     public RobotContainer(){
         driveTrain.setDefaultCommand(new RunCommand(() -> driveTrain
-                .axisDrive(OI.axis(0, ControlMap.L_JOYSTICK_VERTICAL), OI.axis(0, ControlMap.R_JOYSTICK_HORIZONTAL))));
+                .axisDrive(OI.axis(0, ControlMap.L_JOYSTICK_VERTICAL), OI.axis(0, ControlMap.R_JOYSTICK_HORIZONTAL)),driveTrain));
+        
         bLifter.setDefaultCommand(new RunCommand(() -> 
             bLifter.moveBar(0)
-        ));
+        ,bLifter));
         configureButtons();
     } 
 

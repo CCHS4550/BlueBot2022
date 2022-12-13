@@ -31,6 +31,10 @@ public class RobotContainer {
             bLifter.moveBar(0)
         ,bLifter));
         configureButtons();
+
+        shooter.setDefaultCommand(new RunCommand(() ->{
+            shooter.setSpeed(OI.axis(1, ControlMap.RT));
+        }, shooter));
     } 
 
     private void configureButtons() {
@@ -51,11 +55,17 @@ public class RobotContainer {
          .whenPressed(() -> example.setSpeed(0.5))
                 .whenReleased(() -> example.setSpeed(0));
          
-        new JoystickButton(controllers[1], ControlMap.B_BUTTON).whenPressed(() -> {
-            shooter.setSpeed(1);
-        }).whenReleased(() -> {
-            shooter.setSpeed(0);
-        });
+        // new JoystickButton(controllers[1], ControlMap.B_BUTTON).whenPressed(() -> {
+        //     shooter.setSpeed(1);
+        // }).whenReleased(() -> {
+        //     shooter.setSpeed(0);
+        // });
+
+        // new JoystickButton(controllers[1],ControlMap.A_BUTTON).whenPressed(() -> {
+        //     shooter.setSpeed(-1);
+        // }).whenReleased(() ->{
+        //     shooter.setSpeed(0);
+        // });
 
         new JoystickButton(controllers[1], ControlMap.Y_BUTTON).whenPressed(() -> {
             shooter.load();

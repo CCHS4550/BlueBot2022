@@ -50,11 +50,10 @@ public class RobotContainer {
         //see link for full list of logic operators
 
 
-
-        new JoystickButton(controllers[0], ControlMap.A_BUTTON)
-         .whenPressed(() -> example.setSpeed(0.5))
-                .whenReleased(() -> example.setSpeed(0));
+        // new JoystickButton(controllers[0], ControlMap.A_BUTTON)
+        //  .whileHeld(() -> driveTrain.testMotor());
          
+
         // new JoystickButton(controllers[1], ControlMap.B_BUTTON).whenPressed(() -> {
         //     shooter.setSpeed(1);
         // }).whenReleased(() -> {
@@ -77,14 +76,14 @@ public class RobotContainer {
             public boolean get(){
                 return OI.dPad(1, ControlMap.DPAD_UP);
             }
-        }.whenActive(() -> bLifter.moveBar(0.8)).negate();
+        }.whenActive(() -> bLifter.moveBar(0.1)).negate();
          
         
         new Trigger(){
             public boolean get(){
                 return OI.dPad(1, ControlMap.DPAD_DOWN);
             }
-        }.and(uppies.negate()).whenActive(() -> bLifter.moveBar(-0.8));
+        }.and(uppies.negate()).whenActive(() -> bLifter.moveBar(-0.1));
     }
 
     void test(){

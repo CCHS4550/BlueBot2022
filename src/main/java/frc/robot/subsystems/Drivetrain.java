@@ -32,7 +32,11 @@ public class DriveTrain extends SubsystemBase {
     }
 
     public void axisDrive(double speed, double turnSpeed) {
-        driveTrain.arcadeDrive(speed * speed * Math.signum(speed), Math.signum(turnSpeed) * turnSpeed * turnSpeed); //teehee might go wards
+        driveTrain.arcadeDrive(-0.5 * speed * speed * Math.signum(speed), -0.5 * Math.signum(turnSpeed) * turnSpeed * turnSpeed); //teehee might go wards
+    }
+
+    public void testMotor(){
+        frontLeft.set(0.1);
     }
 
 

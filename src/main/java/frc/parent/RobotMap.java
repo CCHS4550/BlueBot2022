@@ -22,19 +22,19 @@ import frc.robot.subsystems.DriveTrain;
 public interface RobotMap {
     // DriveTrain (placeholder values)
     //the front of the robot is the side without the bar lifter
-    public static final int FRONT_LEFT_PORT = 3; //front and back dont matter. Just the fact these two are on this side
-    public static final boolean FRONT_LEFT_REVERSE = true;
-    public static final int BACK_LEFT_PORT = 4;
-    public static final boolean BACK_LEFT_REVERSE = true;
+    public static final int LEFT_ONE_PORT = 3; //front and back dont matter. Just the fact these two are on this side
+    public static final boolean LEFT_ONE_REVERSE = true;
+    public static final int LEFT_TWO_PORT = 4;
+    public static final boolean LEFT_TWO_REVERSE = true;
 
-    public static final int FRONT_RIGHT_PORT = 1;
-    public static final boolean FRONT_RIGHT_REVERSE = false;
-    public static final int BACK_RIGHT_PORT = 2;
-    public static final boolean BACK_RIGHT_REVERSE = false;
+    public static final int RIGHT_ONE_PORT = 1;
+    public static final boolean RIGHT_ONE_REVERSE = false;
+    public static final int RIGHT_TWO_PORT = 2;
+    public static final boolean RIGHT_TWO_REVERSE = false;
 
     // Shooter
-    public static final int FLYWHEEL_ONE_PORT = 6;
-    public static final boolean FLYWHEEL_ONE_REVERSE = false;
+    public static final int FLYWHEEL_PORT = 6;
+    public static final boolean FLYWHEEL_REVERSE = false;
 
     public static final int BAR_LIFTER_MOTOR = 5;
     public static final boolean BAR_LIFTER_REVERSE = false;

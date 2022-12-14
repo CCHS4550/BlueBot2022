@@ -18,13 +18,13 @@ import frc.parent.RobotMap;
 
 public class DriveTrain extends SubsystemBase {
     // Initializing motors
-    private final CCSparkMax frontLeft = new CCSparkMax("Front Left", "fl", RobotMap.FRONT_LEFT_PORT, MotorType.kBrushless, IdleMode.kCoast, RobotMap.FRONT_LEFT_REVERSE, true);
-    private final CCSparkMax frontRight = new CCSparkMax("Front Right", "fr", RobotMap.FRONT_RIGHT_PORT, MotorType.kBrushless, IdleMode.kCoast, RobotMap.FRONT_RIGHT_REVERSE, true);
-    private final CCSparkMax backLeft = new CCSparkMax("Back Left", "bl", RobotMap.BACK_LEFT_PORT, MotorType.kBrushless, IdleMode.kCoast, RobotMap.BACK_LEFT_REVERSE, true);
-    private final CCSparkMax backRight = new CCSparkMax("Back Right", "br", RobotMap.BACK_RIGHT_PORT, MotorType.kBrushless, IdleMode.kCoast, RobotMap.BACK_RIGHT_REVERSE, true);
+    private final CCSparkMax left_one = new CCSparkMax("Front Left", "fl", RobotMap.LEFT_ONE_PORT, MotorType.kBrushless, IdleMode.kCoast, RobotMap.LEFT_ONE_REVERSE, true);
+    private final CCSparkMax right_one = new CCSparkMax("Front Right", "fr", RobotMap.RIGHT_ONE_PORT, MotorType.kBrushless, IdleMode.kCoast, RobotMap.RIGHT_ONE_REVERSE, true);
+    private final CCSparkMax left_two = new CCSparkMax("Back Left", "bl", RobotMap.LEFT_TWO_PORT, MotorType.kBrushless, IdleMode.kCoast, RobotMap.LEFT_TWO_REVERSE, true);
+    private final CCSparkMax right_two = new CCSparkMax("Back Right", "br", RobotMap.RIGHT_TWO_PORT, MotorType.kBrushless, IdleMode.kCoast, RobotMap.RIGHT_TWO_REVERSE, true);
 
-    MotorControllerGroup left = new MotorControllerGroup(frontLeft, backLeft);
-    MotorControllerGroup right = new MotorControllerGroup(frontRight, backRight);
+    MotorControllerGroup left = new MotorControllerGroup(left_one, left_two);
+    MotorControllerGroup right = new MotorControllerGroup(right_one, right_two);
     DifferentialDrive driveTrain = new DifferentialDrive(left, right);
 
     public DriveTrain() {

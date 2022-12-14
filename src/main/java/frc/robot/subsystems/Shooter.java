@@ -18,8 +18,8 @@ import frc.parent.RobotMap;
 
 public class Shooter extends SubsystemBase {
     // Initializing motors and solenoids
-    private final CCSparkMax flywheelOne = new CCSparkMax("Flywheel One", "fo", RobotMap.FLYWHEEL_ONE_PORT,
-            MotorType.kBrushless, IdleMode.kBrake, RobotMap.FLYWHEEL_ONE_REVERSE, true);
+    private final CCSparkMax flywheelOne = new CCSparkMax("Flywheel One", "fo", RobotMap.FLYWHEEL_PORT,
+            MotorType.kBrushless, IdleMode.kBrake, RobotMap.FLYWHEEL_REVERSE, true);
     private final PneumaticsSystem loader = new PneumaticsSystem(PneumaticsModuleType.CTREPCM, RobotMap.LOADER_ONE,
             RobotMap.LOADER_TWO);
 
@@ -28,7 +28,6 @@ public class Shooter extends SubsystemBase {
     }
 
     public void setSpeed(double speed) {
-        System.out.println(speed);
         flywheelOne.set(speed);
     }
     

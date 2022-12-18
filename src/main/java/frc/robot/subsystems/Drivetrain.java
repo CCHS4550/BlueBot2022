@@ -27,11 +27,12 @@ public class DriveTrain extends SubsystemBase {
     MotorControllerGroup left = new MotorControllerGroup(left_one, left_two);
     MotorControllerGroup right = new MotorControllerGroup(right_one, right_two);
     DifferentialDrive driveTrain = new DifferentialDrive(left, right);
-    private final double speed_cap = 0.6;
+    private final double speed_cap = 0.3;
 
     public DriveTrain() {
         
     }
+
 
     public void axisDrive(double speed, double turnSpeed) {
         driveTrain.arcadeDrive(OI.normalize(speed * speed * Math.signum(speed), -1, 1) * -speed_cap ,OI.normalize(turnSpeed * turnSpeed * Math.signum(turnSpeed), -1, 1) * speed_cap ); //if backwrds kill for being autistis(multiply by - 1)
@@ -41,7 +42,8 @@ public class DriveTrain extends SubsystemBase {
     public SequentialCommandGroup runForTime(double seconds, double power){
         SequentialCommandGroup res = new SequentialCommandGroup(
             new InstantCommand(() -> axisDrive(power, 0)),
-            new WaitCommand(seconds)
+            new WaitCommand(seconds),
+            new InstantCommand(() -> axisDrive(0, 0))
         );
         return res;
     }

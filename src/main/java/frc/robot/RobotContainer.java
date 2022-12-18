@@ -27,9 +27,9 @@ public class RobotContainer {
         driveTrain.setDefaultCommand(new RunCommand(() -> driveTrain
                 .axisDrive(OI.axis(0, ControlMap.L_JOYSTICK_VERTICAL), OI.axis(0, ControlMap.R_JOYSTICK_HORIZONTAL)),driveTrain));
         
-        bLifter.setDefaultCommand(new RunCommand(() -> 
-            bLifter.moveBar(0)
-        ,bLifter));
+        // bLifter.setDefaultCommand(new RunCommand(() -> 
+        //     bLifter.moveBar(0)
+        // ,bLifter));
         configureButtons();
 
         shooter.setDefaultCommand(new RunCommand(() ->{
@@ -64,7 +64,7 @@ public class RobotContainer {
         //     shooter.setSpeed(-1);
         // }).whenReleased(() ->{
         //     shooter.setSpeed(0);
-        // });
+        // });A
 
         new JoystickButton(controllers[1], ControlMap.Y_BUTTON).whenPressed(() -> {
             shooter.load();
@@ -76,14 +76,18 @@ public class RobotContainer {
             public boolean get(){
                 return OI.dPad(1, ControlMap.DPAD_UP);
             }
-        }.whenActive(() -> bLifter.moveBar(0.1)).negate();
+        }.whenActive(() -> bLifter.moveBar(0.5));
          
         
-        new Trigger(){
+        Trigger downies = new Trigger(){
             public boolean get(){
                 return OI.dPad(1, ControlMap.DPAD_DOWN);
             }
-        }.and(uppies.negate()).whenActive(() -> bLifter.moveBar(-0.1));
+        }.and(uppies.negate()).whenActive(() -> bLifter.moveBar(-0.5));
+
+        uppies.negate()
+        .and(downies.negate())
+        .whenActive(() -> bLifter.moveBar(0));
     }
 
     void test(){

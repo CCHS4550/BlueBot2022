@@ -34,14 +34,8 @@ public class DriveTrain extends SubsystemBase {
     }
 
     public void axisDrive(double speed, double turnSpeed) {
-<<<<<<< Updated upstream
-        driveTrain.arcadeDrive(OI.normalize(speed * speed * Math.signum(speed), -1, 1) * speed_cap,OI.normalize(turnSpeed * turnSpeed * Math.signum(turnSpeed), -1, 1) * speed_cap ); //if backwrds kill for being autistis(multiply by - 1)
+        driveTrain.arcadeDrive(OI.normalize(speed * speed * Math.signum(speed), -1, 1) * -speed_cap ,OI.normalize(turnSpeed * turnSpeed * Math.signum(turnSpeed), -1, 1) * speed_cap ); //if backwrds kill for being autistis(multiply by - 1)
     }
-=======
-        driveTrain.arcadeDrive(-0.5 * speed * speed * Math.signum(speed), -0.5 * Math.signum(turnSpeed) * turnSpeed * turnSpeed); //teehee might go wards
-    }
-
->>>>>>> Stashed changes
 
 
     public SequentialCommandGroup runForTime(double seconds, double power){

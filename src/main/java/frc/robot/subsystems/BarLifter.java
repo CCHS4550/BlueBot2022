@@ -26,7 +26,7 @@ public class BarLifter extends SubsystemBase {
     }
     
     public void moveBar(double speed) {
-        System.out.println(one.get());
+        System.out.println(speed);
         one.set(speed);
     }
     

@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.helpers.CCSparkMax;
+import frc.helpers.OI;
 import frc.parent.RobotMap;
 
 public class DriveTrain extends SubsystemBase {
@@ -26,17 +27,14 @@ public class DriveTrain extends SubsystemBase {
     MotorControllerGroup left = new MotorControllerGroup(left_one, left_two);
     MotorControllerGroup right = new MotorControllerGroup(right_one, right_two);
     DifferentialDrive driveTrain = new DifferentialDrive(left, right);
+    private final double speed_cap = 0.6;
 
     public DriveTrain() {
         
     }
 
     public void axisDrive(double speed, double turnSpeed) {
-        driveTrain.arcadeDrive(-0.5 * speed * speed * Math.signum(speed), -0.5 * Math.signum(turnSpeed) * turnSpeed * turnSpeed); //teehee might go wards
-    }
-
-    public void testMotor(){
-        frontLeft.set(0.1);
+        driveTrain.arcadeDrive(OI.normalize(speed * speed * Math.signum(speed), -1, 1) * speed_cap,OI.normalize(turnSpeed * turnSpeed * Math.signum(turnSpeed), -1, 1) * speed_cap ); //if backwrds kill for being autistis(multiply by - 1)
     }
 
 
@@ -47,4 +45,6 @@ public class DriveTrain extends SubsystemBase {
         );
         return res;
     }
+
+
 }
